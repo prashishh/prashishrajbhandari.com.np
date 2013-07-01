@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Prashish Rajbhandari</title>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/text.css" />
+<link rel="stylesheet" href="css/960_24_col.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" 
+      type="image/ico" 
+      href="img/favicon.ico" />
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+<script type="text/javascript">
+
+function DocumentAction() {
+  var currentPosition = 0;
+  var slideWidth = 560;
+  var slides = $('.slide');
+  var numberOfSlides = slides.length;
+
+  // Remove scrollbar in JS
+  $('#slidesContainer').css('overflow', 'hidden');
+
+  // Wrap all .slides with #slideInner div
+  slides
+    .wrapAll('<div id="slideInner"></div>')
+    // Float left to display horizontally, readjust .slides width
+	.css({
+      'float' : 'left',
+      'width' : slideWidth
+    });
+
+  // Set #slideInner width equal to total width of all slides
+  $('#slideInner').css('width', slideWidth * numberOfSlides);
+
+  // Insert controls in the DOM
+  $('#slideshow')
+    .prepend('<span class="control" id="leftControl">Clicking moves left</span>')
+    .append('<span class="control" id="rightControl">Clicking moves right</span>');
+
+  // Hide left arrow control on first load
+  manageControls(currentPosition);
+
+  // Create event listeners for .controls clicks
+  $('.control')
+    .bind('click', function(){
+    // Determine new position
+	currentPosition = ($(this).attr('id')=='rightControl') ? currentPosition+1 : currentPosition-1;
+    
+	// Hide / show controls
+    manageControls(currentPosition);
+    // Move slideInner using margin-left
+    $('#slideInner').animate({
+      'marginLeft' : slideWidth*(-currentPosition)
+    });
+  });
+
+  // manageControls: Hides and Shows controls depending on currentPosition
+  function manageControls(position){
+    // Hide left arrow if position is first slide
+	if(position==0){ $('#leftControl').hide() } else{ $('#leftControl').show() }
+	// Hide right arrow if position is last slide
+    if(position==numberOfSlides-1){ $('#rightControl').hide() } else{ $('#rightControl').show() }
+  }	
+};
+
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15997266-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body>
+<div class="container_24 ">
+
+<div class = "grid_12 prefix_3 intro">
+	
+<div class = "grid_12 header-top">
+<h3>Prashish Rajbhandari</h3>
+</div>
+
+<div class = "clear"></div>
+
+<div class = "grid_12 prefix_1 header-bottom ">
+<h4>Engineering Student, Web Developer, Designer, Blogger from <span class = "country"> Nepal </span></h4>
+</div>
+
+<div class = "clear"></div>
+
+<div class = "grid_18 ">
+<div class = "grid_6 ">
+<img class = "mid" src = "img/photo2.png" width = "200px" height = "220px"> 
+</div>
+
+<div class = "grid_11 mid-text ">
+	
+	<p>
+		<strong><span class = "introduction2"> Hi there,</span></strong><br><br>
+		<span class = "introduction">I'm Prashish, currently an Engineering Student at Indian Institute of Information Technology, Allahabad. Thanks for visiting my online portfolio site.</span><br><br>
+		
+		I consider myself <strong>70% Developer</strong> and <strong>40% Designer</strong>, always giving <strong>110%</strong> to my work; architecting concepts and ideas and turning them into working solutions.
+
+	</p>
+
+</div>
+</div>
+	
+<div class = "grid_15 prefix_3">
+	<span class = "quote"> ‎"The way to get started is to quit talking and begin doing."</span>
+	
+</div>
+
+<div class = "grid_12 prefix_5 suffix_5">
+	<span class = "author">  -Walt Disney</span>
+</div>
+
+
+<div class = "grid_16 prefix_2 suffix_4">
+	
+	<ul id = "nav" class="tabContainer">
+
+	</ul>
+
+</div>	
+
+
+<div class="clear"></div>
+
+<div id="tabContent">
+	
+	<div class = "grid_18">
+
+
+	<div id = "contentbox"  >
+	<div id="contentHolder">
+
+	</div>
+	</div>
+</div>
+
+<div class = "clear"></div>
+
+
+</div>
+
+
+
+
+
+</div>
+<!-- end intro -->
+
+<div class = "grid_22 prefix_1 footer">
+	
+	<div class = "grid_20 prefix_2">
+		<img src = "img/line.gif"/>
+	</div>
+	<div class = "clear"></div>
+	<p class = "footertext prefix_1"> Copyright © 2013 | Prashish Rajbhandari</p>
+
+
+</div>
+<!-- end container_24 -->
+</body>
+</html>
